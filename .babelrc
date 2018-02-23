@@ -1,0 +1,27 @@
+{
+  "presets": [
+    [
+      "env",
+      {
+        "modules": false,
+        "useBuiltIns": true,
+        "targets": {
+          "browsers": ["last 2 versions"]
+        }
+      }
+    ],
+    "stage-3",
+    "flow",
+    "react"
+  ],
+  "plugins": [
+    [
+      "module-resolver",
+      {
+        "alias": {
+          "^webpackDemo/(.+)": "./src/\\1"
+        }
+      }
+    ]
+  ]
+}
