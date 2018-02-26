@@ -1,0 +1,34 @@
+version: '3'
+services:
+  db:
+    image: postgres:9.6.3-alpine
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: webpackdemo
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+    ports:
+      - "7001:5432"
+  app:
+    environment:
+      POSTGRES_HOST: db
+      POSTGRES_PORT: 5432
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: webpackdemo  
+    build:
+      context: .
+    restart: always
+    ports:
+      - "7000:7000"
+    volumes:
+      # - ./.babelrc:/usr/app/.babelrc
+      - ./src:/usr/app/src
+      # - ./package.json:/usr/app/package.json
+      # - ./knexfile.js:/usr/app/knexfile.js
+      # - ./node_modules:/usr/app/node_modules
+      # - ./yarn.lock:/usr/app/yarn.lock
+      # - ./scripts:/usr/app/scripts
+      # - ./buildInfo.json:/usr/app/buildInfo.json
+    command: yarn run start:dev
