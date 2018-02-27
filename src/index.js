@@ -10,7 +10,7 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(morgan('combined'));
 
-app.get('/', (req, res) => res.send('Hello World SAccountAPI'));
+app.get('/', (req, res) => res.send('Hello World webpackDemo!'));
 
 // app.get('/accounts/:id', (req, res, next) => {
 //   return db
